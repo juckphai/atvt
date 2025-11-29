@@ -3928,4 +3928,27 @@ font-size: 11px;
     }
 }
 
-/* --- END: Inline Password Fix --- */
+/* --- START FIX: Equal Width (ทำให้แถบระยะเวลา เท่ากับ เวลาเริ่มต้น/สิ้นสุด) --- */
+
+/* 1. บังคับความกว้างของช่อง 'ชั่วโมง' และ 'นาที' ให้เท่ากับช่องเวลา (130px) */
+#duration-hours,
+#duration-minutes {
+    width: 130px !important;      /* ปรับจาก 70px เป็น 130px ให้เท่ากับ input เวลา */
+    max-width: 130px !important;
+    padding: 8px 5px !important;  /* จัดระยะขอบในให้เท่ากัน */
+}
+
+/* 2. จัดระยะห่างระหว่างกล่องชั่วโมงกับนาที ให้เท่ากับระยะห่างของเวลาเริ่มต้นกับสิ้นสุด */
+.duration-inputs-container {
+    gap: 15px !important; /* เท่ากับ .time-row gap */
+}
+
+/* 3. ปรับขนาดสำหรับหน้าจอมือถือ (ให้เล็กลงพร้อมๆ กันที่ 120px) */
+@media (max-width: 480px) {
+    #duration-hours,
+    #duration-minutes {
+        width: 120px !important; /* ปรับให้เท่ากับ Time Input บนมือถือ */
+    }
+}
+
+/* --- END FIX: Equal Width --- */
