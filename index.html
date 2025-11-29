@@ -173,72 +173,31 @@
 </div>
 
 <div class="time-inputs-section">
-  <div class="time-input-group duration-block">
-    <div class="date-wrapper duration-wrapper">
-      <label class="display-date">⏱️ ระยะเวลา :</label>
+  <div class="time-input-group duration-block" 
+       style="width: 100%; max-width: 400px; margin: 0 auto;"> <div class="date-wrapper duration-wrapper" 
+         style="display: flex; justify-content: center; align-items: center; width: 100%; margin-bottom: 2px;">
+      
+      <label class="display-date" 
+             style="font-size: clamp(0.8rem, 2.5vw, 1rem); white-space: nowrap; font-weight: normal; color: #000; margin: 0 auto; text-align: center;">
+        ⏱️ ระยะเวลา :
+      </label>
+    </div>
 
-      <div class="duration-inputs-container">
-        <div class="duration-input-group">
-          <input type="number" id="duration-hours" min="0" max="23" value="1" placeholder="ชม." required>
-          <span class="duration-label">🕐 ชั่วโมง</span>
-        </div>
-        <div class="duration-input-group">
-          <input type="number" id="duration-minutes" min="0" max="59" value="0" placeholder="น." required>
-          <span class="duration-label">⏰ นาที</span>
-        </div>
+    <div class="duration-inputs-container" 
+         style="display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; margin-top: 5px;"> 
+      
+      <div class="duration-input-group" style="flex: 0 0 auto;"> <input type="number" id="duration-hours" min="0" max="23" value="1" placeholder="ชม." required 
+               style="width: 70px; padding: 6px; text-align: center; font-size: clamp(0.8rem, 2.5vw, 1rem); border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box;">
+        <span class="duration-label" style="font-size: 0.8rem; margin-top: 4px;">🕐 ชั่วโมง</span>
       </div>
+      <div class="duration-input-group" style="flex: 0 0 auto;"> <input type="number" id="duration-minutes" min="0" max="59" value="0" placeholder="น." required 
+               style="width: 70px; padding: 6px; text-align: center; font-size: clamp(0.8rem, 2.5vw, 1rem); border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box;">
+        <span class="duration-label" style="font-size: 0.8rem; margin-top: 4px;">⏰ นาที</span>
+      </div>
+        
     </div>
   </div>
 
-
-<style>
-  /* ---------------------------
-     ปรับให้ "ระยะเวลา" เหมือน "เลือกวันที่"
-  --------------------------- */
-  .duration-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px; /* ระยะห่างเล็กน้อยระหว่าง label กับช่องกรอก */
-    width: 100%;
-    margin-bottom: 2px;
-  }
-
-  .display-date {
-    font-size: clamp(0.8rem, 2.5vw, 1rem); /* ✅ ขนาดเท่ากับ "เลือกวันที่" */
-    white-space: nowrap;
-    font-weight: normal;
-    color: #000;
-  }
-
-  .duration-inputs-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .duration-input-group {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .duration-input-group input {
-    width: 90px;
-    padding: 10px;
-    text-align: center;
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-
-  .duration-label {
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
-    white-space: nowrap;
-  }
-</style>
 
         <div class="time-row" style="display: flex; justify-content: center; gap: 4px; margin-top: 2px;">
           <div class="time-input-group">
@@ -310,7 +269,7 @@
       </div>
 
       <div class="entry-group" style="font-size: clamp(0.8rem, 2.5vw, 1rem); margin-top: 2px;">
-        <label for="backup-password">🔐 รหัสผ่านสำรองข้อมูล (ไม่บังคับ):</label>
+        <label for="backup-password">🔐 รหัสผ่านข้อมูล (ไม่บังคับ):</label>
         <div style="position: relative; margin-top: 2px;">
           <input
             type="password"
