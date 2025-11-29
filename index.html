@@ -569,17 +569,6 @@
         navigator.serviceWorker.register('./service-worker.js')
           .then(function(registration) {
             console.log('Service Worker ลงทะเบียนสำเร็จ: ', registration.scope);
-            
-            // ตรวจสอบการอัปเดต
-            registration.addEventListener('updatefound', () => {
-                const newWorker = registration.installing;
-                newWorker.addEventListener('statechange', () => {
-                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                        // แจ้งเตือนผู้ใช้ว่ามีเวอร์ชันใหม่ (ถ้าต้องการ)
-                        console.log('New content is available; please refresh.');
-                    }
-                });
-            });
           })
           .catch(function(error) {
             console.log('Service Worker ลงทะเบียนล้มเหลว: ', error);
@@ -591,6 +580,95 @@
     navigator.serviceWorker.addEventListener('controllerchange', function() {
       console.log('Service Worker ถูกอัพเดทแล้ว');
       window.location.reload();
+    });
+    
+    // ฟังก์ชันสำหรับการจัดการแบบมือถือ
+    function toggleMobileManagement(actionsId) {
+      const actions = document.getElementById(actionsId);
+      if (actions.style.display === 'flex') {
+        actions.style.display = 'none';
+      } else {
+        actions.style.display = 'flex';
+      }
+    }
+    
+    // ฟังก์ชันสำหรับการแสดง/ซ่อนเมนูจัดการ (เฉพาะส่วนฟันเฟือง)
+    function toggleManagementActions(event, actionsId) {
+      // ป้องกันไม่ให้ event ไปกระตุ้นฟอร์มหลัก
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      
+      const actions = document.getElementById(actionsId);
+      if (actions.style.display === 'flex') {
+        actions.style.display = 'none';
+      } else {
+        // ซ่อนเมนูอื่นๆ ที่อาจเปิดอยู่
+        const allActions = document.querySelectorAll('.management-actions');
+        allActions.forEach(action => {
+          if (action.id !== actionsId) {
+            action.style.display = 'none';
+          }
+        });
+        
+        actions.style.display = 'flex';
+      }
+    }
+    
+    // ฟังก์ชันสำหรับแสดง/ซ่อนกิจกรรมทั้งหมด
+    function toggleActivitiesVisibility() {
+      const activitiesSection = document.getElementById('activitiesSection');
+      if (activitiesSection.style.display === 'none') {
+        activitiesSection.style.display = 'block';
+        loadUserActivities();
+      } else {
+        activitiesSection.style.display = 'none';
+      }
+    }
+
+    // เพิ่ม Event Listeners สำหรับปุ่มฟันเฟืองเมื่อโหลดหน้าเว็บ
+    document.addEventListener('DOMContentLoaded', function() {
+      // สำหรับผู้ทำกิจกรรม
+      const togglePersonBtn = document.getElementById('togglePersonControls');
+      if (togglePersonBtn) {
+        togglePersonBtn.addEventListener('click', function(event) {
+          toggleManagementActions(event, 'personActions');
+        });
+      }
+      
+      // สำหรับประเภทกิจกรรม
+      const toggleActivityTypeBtn = document.getElementById('toggleActivityTypeControls');
+      if (toggleActivityTypeBtn) {
+        toggleActivityTypeBtn.addEventListener('click', function(event) {
+          toggleManagementActions(event, 'activityTypeActions');
+        });
+      }
+      
+      // ซ่อนเมนูจัดการทั้งหมดเมื่อเริ่มต้น
+      const allActions = document.querySelectorAll('.management-actions');
+      allActions.forEach(action => {
+        action.style.display = 'none';
+      });
+
+      // เพิ่ม event listener เพื่อซ่อนเมนูเมื่อคลิกนอกพื้นที่
+      document.addEventListener('click', function(event) {
+        const allActions = document.querySelectorAll('.management-actions');
+        const isClickInsidePersonActions = document.getElementById('personActions')?.contains(event.target);
+        const isClickInsideActivityTypeActions = document.getElementById('activityTypeActions')?.contains(event.target);
+        const isClickOnPersonToggle = event.target.closest('#togglePersonControls');
+        const isClickOnActivityTypeToggle = event.target.closest('#toggleActivityTypeControls');
+        
+        if (!isClickInsidePersonActions && !isClickOnPersonToggle) {
+          const personActions = document.getElementById('personActions');
+          if (personActions) personActions.style.display = 'none';
+        }
+        
+        if (!isClickInsideActivityTypeActions && !isClickOnActivityTypeToggle) {
+          const activityTypeActions = document.getElementById('activityTypeActions');
+          if (activityTypeActions) activityTypeActions.style.display = 'none';
+        }
+      });
     });
   </script>
 </body>
