@@ -2347,151 +2347,147 @@ function displaySummary() {
 let summaryHTML = `
     <div class="summaryResult" style="font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 10px 0.5px 5px 0.5px; border: 1.5px solid #F660EB; border-radius: 5px; background-color: #FAFAD2; text-align: center; line-height: 1.0; width: 100%; box-sizing: border-box;">
             <div style="text-align: center; margin: 2px 0;">
-                <h3 style="color: blue; font-size: 0.9rem; line-height: 1.2; margin: 2px 0;">
+                <h3 style="color: blue; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.2; margin: 2px 0;">
                     ${personSummaryText}
                 </h3>
             </div>
             <div style="text-align: center; margin: 2px 0;">
-                <h3 style="color: blue; font-size: 0.9rem; line-height: 1.2; margin: 2px 0;">
+                <h3 style="color: blue; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.2; margin: 2px 0;">
                     สรุปวันที่ ${getCurrentDateTimeThai().replace(/(\d{2}\/\d{2}\/\d{4}) (\d{2}:\d{2})/, '$1 เวลา $2 น.')}
                 </h3>
             </div>
             <div style="text-align: center; margin: 2px 0;">
-                <h3 style="color: blue; font-size: 0.9rem; line-height: 1.2; margin: 2px 0;">
+                <h3 style="color: blue; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.2; margin: 2px 0;">
                     ${dateRangeText}
                 </h3>
             </div>
 
-            <!-- ส่วนสรุปจำนวนวัน - แก้ไขให้แสดงในทุกกรณี -->
             <div style="background-color: #FAFAD2; padding: 5px; margin: 5px 0; text-align: center; color: blue;">
-                <h4 style="margin: 5px 0; font-size: 0.9rem; line-height: 1.2;">สรุปจำนวนวัน</h4>
-                <p style="margin: 3px 0; font-size: 0.9rem; line-height: 1.0;">• จำนวนวันทั้งหมด : ${totalDays} วัน</p>
-                <p style="margin: 3px 0; font-size: 0.9rem; line-height: 1.0;">• จำนวนวันที่มีกิจกรรม : ${daysWithActivities} วัน</p>
-                <p style="margin: 3px 0; font-size: 0.9rem; line-height: 1.0;">• วันที่ไม่มีกิจกรรม : ${daysWithoutActivities} วัน</p>
-                <p style="margin: 3px 0; font-size: 0.9rem; line-height: 1.0;">• เวลาเฉลี่ยต่อวัน : ${formatDuration(avgDurationPerDay)}</p>
-                <p style="margin: 3px 0; font-size: 0.9rem; line-height: 1.0;">• รวมเวลาทั้งหมด : ${formatDuration(totalDurationAll)}</p>
+                <h4 style="margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.2;">สรุปจำนวนวัน</h4>
+                <p style="margin: 3px 0; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.0;">• จำนวนวันทั้งหมด : ${totalDays} วัน</p>
+                <p style="margin: 3px 0; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.0;">• จำนวนวันที่มีกิจกรรม : ${daysWithActivities} วัน</p>
+                <p style="margin: 3px 0; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.0;">• วันที่ไม่มีกิจกรรม : ${daysWithoutActivities} วัน</p>
+                <p style="margin: 3px 0; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.0;">• เวลาเฉลี่ยต่อวัน : ${formatDuration(avgDurationPerDay)}</p>
+                <p style="margin: 3px 0; font-size: clamp(0.75rem, 1vw, 0.9rem); line-height: 1.0;">• รวมเวลาทั้งหมด : ${formatDuration(totalDurationAll)}</p>
             </div>
 
-            <h4 style="color: #0056b3; margin: 5px 0; font-size: 0.9rem;">
+            <h4 style="color: #0056b3; margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
                 สรุปตามประเภทกิจกรรม
             </h4>
-            <table style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.9rem;">
+            <table class="type-summary-table" style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
                 <thead>
-                    <tr style="background-color: #007bff; color: white;">
+                    <tr style="background: linear-gradient(135deg, #ff9f43 0%, #ff8b33 100%); color: white;">
                         <th style="padding: 6px; border: 1px solid #ddd;">ประเภทกิจกรรม</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">ระยะเวลารวม</th>
+                        <th style="padding: 6px; border: 1px solid #ddd;">ระยะเวลารวม</th> 
                     </tr>
                 </thead>
                 <tbody>
+`;
+
+Object.entries(typeTotals).forEach(([type, duration]) => {
+    summaryHTML += `
+        <tr>
+            <td style="padding: 5px; border: 1px solid #ddd;">${type}</td>
+            <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
+        </tr>
+    `;
+});
+
+summaryHTML += `
+                </tbody>
+            </table>
+`;
+
+if (type === 'brief-summary') {
+    summaryHTML += `
+        <h4 style="color: #0056b3; margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
+            กิจกรรมล่าสุด (15 รายการ)
+        </h4>
+        <table style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: clamp(0.7rem, 1vw, 0.8rem);">
+            <thead>
+                <tr style="background: linear-gradient(135deg, #ff9f43 0%, #ff8b33 100%); color: white;">
+                    <th style="padding: 6px; border: 1px solid #ddd;">กิจกรรม</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">วันที่</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">รวมเวลา</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">รายละเอียด</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
 
-    Object.entries(typeTotals).forEach(([type, duration]) => {
+    const latestActivities = [...activities]
+        .sort((a, b) => {
+            const dateCompare = b.date.localeCompare(a.date);
+            if (dateCompare !== 0) return dateCompare;
+            return b.startTime.localeCompare(a.startTime);
+        })
+        .slice(0, 15);
+
+    latestActivities.forEach(activity => {
+        const duration = calculateDuration(activity.startTime, activity.endTime);
         summaryHTML += `
             <tr>
-                <td style="padding: 5px; border: 1px solid #ddd;">${type}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${activity.activityName}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
                 <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${activity.details || '-'}</td>
             </tr>
         `;
     });
 
     summaryHTML += `
-                </tbody>
-            </table>
+            </tbody>
+        </table>
+    `;
+} else {
+    summaryHTML += `
+        <h4 style="color: #0056b3; margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
+            รายการกิจกรรมทั้งหมด (${activities.length} รายการ)
+        </h4>
+        <table style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: clamp(0.7rem, 1vw, 0.8rem);">
+            <thead>
+                <tr style="background: linear-gradient(135deg, #ff9f43 0%, #ff8b33 100%); color: white;">
+                    <th style="padding: 6px; border: 1px solid #ddd;">กิจกรรม</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">วันที่</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">รวมเวลา</th>
+                    <th style="padding: 6px; border: 1px solid #ddd;">รายละเอียด</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
 
-    // สำหรับสรุปอย่างย่อ - แก้ไขให้แสดงข้อมูลครบถ้วน
-    if (type === 'brief-summary') {
+    const sortedActivities = [...activities].sort((a, b) => {
+        const dateCompare = b.date.localeCompare(a.date);
+        if (dateCompare !== 0) return dateCompare;
+        return b.startTime.localeCompare(a.startTime);
+    });
+
+    sortedActivities.forEach(activity => {
+        const duration = calculateDuration(activity.startTime, activity.endTime);
         summaryHTML += `
-            <h4 style="color: #0056b3; margin: 5px 0; font-size: 0.9rem;">
-                กิจกรรมล่าสุด (15 รายการ)
-            </h4>
-            <table style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.8rem;">
-                <thead>
-                    <tr style="background-color: #007bff; color: white;">
-                        <th style="padding: 6px; border: 1px solid #ddd;">กิจกรรม</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">วันที่</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">รวมเวลา</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">รายละเอียด</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <tr>
+                <td style="padding: 5px; border: 1px solid #ddd;">${activity.activityName}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${activity.details || '-'}</td>
+            </tr>
         `;
+    });
 
-        const latestActivities = [...activities]
-            .sort((a, b) => {
-                const dateCompare = b.date.localeCompare(a.date);
-                if (dateCompare !== 0) return dateCompare;
-                return b.startTime.localeCompare(a.startTime);
-            })
-            .slice(0, 15);
+    summaryHTML += `
+            </tbody>
+        </table>
+    `;
+}
 
-        latestActivities.forEach(activity => {
-            const duration = calculateDuration(activity.startTime, activity.endTime);
-            summaryHTML += `
-                <tr>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${activity.activityName}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${activity.details || '-'}</td>
-                </tr>
-            `;
-        });
+summaryHTML += `</div>`;
 
-        summaryHTML += `
-                </tbody>
-            </table>
-        `;
-    } else {
-        // สำหรับสรุปแบบเต็ม
-        summaryHTML += `
-            <h4 style="color: #0056b3; margin: 5px 0; font-size: 0.9rem;">
-                รายการกิจกรรมทั้งหมด (${activities.length} รายการ)
-            </h4>
-            <table style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.8rem;">
-                <thead>
-                    <tr style="background-color: #007bff; color: white;">
-                        <th style="padding: 6px; border: 1px solid #ddd;">กิจกรรม</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">วันที่</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">รวมเวลา</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">รายละเอียด</th>
-                    </tr>
-                </thead>
-                <tbody>
-        `;
-
-        const sortedActivities = [...activities].sort((a, b) => {
-            const dateCompare = b.date.localeCompare(a.date);
-            if (dateCompare !== 0) return dateCompare;
-            return b.startTime.localeCompare(a.startTime);
-        });
-
-        sortedActivities.forEach(activity => {
-            const duration = calculateDuration(activity.startTime, activity.endTime);
-            summaryHTML += `
-                <tr>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${activity.activityName}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
-                    <td style="padding: 5px; border: 1px solid #ddd;">${activity.details || '-'}</td>
-                </tr>
-            `;
-        });
-
-        summaryHTML += `
-                </tbody>
-            </table>
-        `;
-    }
-
-    summaryHTML += `</div>`;
-
-    // แสดงผลใน modal
-    document.getElementById('modalBodyContent').innerHTML = summaryHTML;
-    document.getElementById('summaryModal').style.display = 'flex';
+document.getElementById('modalBodyContent').innerHTML = summaryHTML;
+document.getElementById('summaryModal').style.display = 'flex';
 }
 
 // === ฟังก์ชันส่งออกสรุปเป็น XLSX ที่ปรับปรุงให้มีโครงสร้างเหมือน PDF ===
