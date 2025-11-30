@@ -3015,7 +3015,7 @@ function saveSummaryAsImage() {
     pinkFrame.style.boxSizing = 'content-box';
     
     html2canvas(pinkFrame, {
-        scale: 2,
+        scale: 4,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#FFFFFF',
