@@ -1384,3 +1384,30 @@ footer div {
   footer { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); }
   footer::before { background: linear-gradient(90deg, #e74c3c, #1abc9c, #3498db, #2ecc71, #f1c40f); }
 }
+
+/* --- 15. Summary Popup Compact Styles (ADDED) --- */
+/* ปรับลดช่องว่างใน Popup สรุปผล */
+.summaryResult h3 {
+  margin: 1px 0 !important;       /* ลดระยะห่างหัวข้อหลัก */
+  line-height: 1.2 !important;
+}
+
+.summaryResult h4 {
+  margin: 2px 0 !important;       /* ลดระยะห่างหัวข้อย่อย */
+  padding-bottom: 2px !important;
+}
+
+.summaryResult p {
+  margin: 0 !important;           /* ลบระยะห่างระหว่างบรรทัดข้อความ */
+  line-height: 1.3 !important;    /* ปรับความสูงบรรทัดให้อ่านง่ายแต่ไม่ห่างเกินไป */
+}
+
+.summaryResult table {
+  margin: 3px 0 !important;       /* ลดระยะห่างรอบตาราง */
+}
+
+/* ปรับกล่องสีเหลือง (สรุปจำนวนวัน) และกล่องหัวข้อ */
+.summaryResult > div {
+  margin: 1px 0 !important;
+  padding: 2px !important;
+}

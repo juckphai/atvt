@@ -2374,11 +2374,11 @@ let summaryHTML = `
             <h4 style="color: #0056b3; margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
                 สรุปตามประเภทกิจกรรม
             </h4>
-            <table class="type-summary-table" style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
+            <table class="type-summary-table" style="width: 100%; border-collapse: collapse; margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
                 <thead>
                     <tr style="background: linear-gradient(135deg, #ff9f43 0%, #ff8b33 100%); color: white;">
-                        <th style="padding: 6px; border: 1px solid #ddd;">ประเภทกิจกรรม</th>
-                        <th style="padding: 6px; border: 1px solid #ddd;">ระยะเวลารวม</th> 
+                        <th style="padding: 3px; border: 1px solid #ddd;">ประเภทกิจกรรม</th>
+                        <th style="padding: 3px; border: 1px solid #ddd;">ระยะเวลารวม</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -2387,8 +2387,8 @@ let summaryHTML = `
 Object.entries(typeTotals).forEach(([type, duration]) => {
     summaryHTML += `
         <tr>
-            <td style="padding: 5px; border: 1px solid #ddd;">${type}</td>
-            <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
+            <td style="padding: 3px; border: 1px solid #ddd;">${type}</td>
+            <td style="padding: 3px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
         </tr>
     `;
 });
@@ -2403,14 +2403,14 @@ if (type === 'brief-summary') {
         <h4 style="color: #0056b3; margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
             กิจกรรมล่าสุด (15 รายการ)
         </h4>
-        <table style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: clamp(0.7rem, 1vw, 0.8rem);">
+        <table style="width: 100%; border-collapse: collapse; margin: 5px 0; font-size: clamp(0.7rem, 1vw, 0.8rem);">
             <thead>
                 <tr style="background: linear-gradient(135deg, #ff9f43 0%, #ff8b33 100%); color: white;">
-                    <th style="padding: 6px; border: 1px solid #ddd;">กิจกรรม</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">วันที่</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">รวมเวลา</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">รายละเอียด</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">กิจกรรม</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">วันที่</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">รวมเวลา</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">รายละเอียด</th>
                 </tr>
             </thead>
             <tbody>
@@ -2428,11 +2428,11 @@ if (type === 'brief-summary') {
         const duration = calculateDuration(activity.startTime, activity.endTime);
         summaryHTML += `
             <tr>
-                <td style="padding: 5px; border: 1px solid #ddd;">${activity.activityName}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${activity.details || '-'}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${activity.activityName}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${activity.details || '-'}</td>
             </tr>
         `;
     });
@@ -2446,14 +2446,14 @@ if (type === 'brief-summary') {
         <h4 style="color: #0056b3; margin: 5px 0; font-size: clamp(0.75rem, 1vw, 0.9rem);">
             รายการกิจกรรมทั้งหมด (${activities.length} รายการ)
         </h4>
-        <table style="width: 100%; border-collapse: collapse; margin: 8px 0; font-size: clamp(0.7rem, 1vw, 0.8rem);">
+        <table style="width: 100%; border-collapse: collapse; margin: 4px 0; font-size: clamp(0.7rem, 1vw, 0.8rem);">
             <thead>
                 <tr style="background: linear-gradient(135deg, #ff9f43 0%, #ff8b33 100%); color: white;">
-                    <th style="padding: 6px; border: 1px solid #ddd;">กิจกรรม</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">วันที่</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">รวมเวลา</th>
-                    <th style="padding: 6px; border: 1px solid #ddd;">รายละเอียด</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">กิจกรรม</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">วันที่</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">เวลาเริ่ม&สิ้นสุด</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">รวมเวลา</th>
+                    <th style="padding: 3px; border: 1px solid #ddd;">รายละเอียด</th>
                 </tr>
             </thead>
             <tbody>
@@ -2469,11 +2469,11 @@ if (type === 'brief-summary') {
         const duration = calculateDuration(activity.startTime, activity.endTime);
         summaryHTML += `
             <tr>
-                <td style="padding: 5px; border: 1px solid #ddd;">${activity.activityName}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">${activity.details || '-'}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${activity.activityName}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${formatDateForDisplay(activity.date)}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${activity.startTime} - ${activity.endTime}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${formatDuration(duration)}</td>
+                <td style="padding: 3px; border: 1px solid #ddd;">${activity.details || '-'}</td>
             </tr>
         `;
     });
