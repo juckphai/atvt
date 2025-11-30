@@ -1305,9 +1305,9 @@ footer div {
   
   /* Fix column widths for Type Summary Table (2 columns) */
 .summaryResult table.type-summary-table th:nth-child(1), 
-.summaryResult table.type-summary-table td:nth-child(1) { width: 60% !important; }
+.summaryResult table.type-summary-table td:nth-child(1) { width: 40% !important; }
 .summaryResult table.type-summary-table th:nth-child(2), 
-.summaryResult table.type-summary-table td:nth-child(2) { width: 40% !important; }
+.summaryResult table.type-summary-table td:nth-child(2) { width: 60% !important; }
 
   /* Manage Form Specifics */
   #manage-activities-form .entry-group { gap: 5px !important; max-width: 100% !important; }
