@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -47,13 +46,14 @@
                 type="button" 
                 onclick="document.getElementById('restoreFile').click()" 
                 style="
-                  background-color: #196B24;
+                  /* ปรับสีปุ่มโหลดข้อมูลกิจกรรม */
+                  background-color: #4a90e2; /* น้ำเงิน */
                   color: white;
                   font-weight: bold;
                   padding: 5px 15px;
                   height: 36px;
                   font-size: 0.8rem;
-                  border: 3px solid #FF33CC;
+                  border: 3px solid #546de5; /* น้ำเงินม่วง */
                   border-radius: 50px;
                   cursor: pointer;
                   transition: all 0.3s ease;
@@ -61,10 +61,10 @@
                   width: fit-content;
                   touch-action: manipulation;
                 "
-                onmouseover="this.style.backgroundColor='#145a1d'"
-                onmouseout="this.style.backgroundColor='#196B24'"
-                ontouchstart="this.style.backgroundColor='#145a1d'"
-                ontouchend="this.style.backgroundColor='#196B24'">
+                onmouseover="this.style.backgroundColor='#3a7ed9'"
+                onmouseout="this.style.backgroundColor='#4a90e2'"
+                ontouchstart="this.style.backgroundColor='#3a7ed9'"
+                ontouchend="this.style.backgroundColor='#4a90e2'">
                 📂 โหลดข้อมูลกิจกรรม
               </button>
 
@@ -109,6 +109,7 @@
           padding: 6px 10px;
           border-radius: 6px;
           height: 34px;
+          background-color: #fff; /* พื้นหลังช่องกรอก */
         "
       >
         <option value="">👤 เลือกผู้ทำกิจกรรม</option>
@@ -146,6 +147,7 @@
           padding: 6px 10px;
           border-radius: 6px;
           height: 34px;
+          background-color: #fff; /* พื้นหลังช่องกรอก */
         "
       >
         <option value="">📊 เลือกประเภทกิจกรรม</option>
@@ -170,7 +172,7 @@
   </label>
   
   <input type="date" id="activity-date" 
-         style="font-size: clamp(0.8rem, 2.5vw, 1rem); padding: 4px; max-width: 250px; width: 60%;">
+         style="font-size: clamp(0.8rem, 2.5vw, 1rem); padding: 4px; max-width: 250px; width: 60%; background-color: #fff;">
 </div>
 
 <div class="time-inputs-section">
@@ -188,11 +190,11 @@
          style="display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; margin-top: 5px;"> 
       
       <div class="duration-input-group" style="flex: 0 0 auto;"> <input type="number" id="duration-hours" min="0" max="23" value="1" placeholder="ชม." required 
-               style="width: 70px; padding: 6px; text-align: center; font-size: clamp(0.8rem, 2.5vw, 1rem); border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box;">
+               style="width: 70px; padding: 6px; text-align: center; font-size: clamp(0.8rem, 2.5vw, 1rem); border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; background-color: #fff;">
         <span class="duration-label" style="font-size: 0.8rem; margin-top: 4px;">🕐 ชั่วโมง</span>
       </div>
       <div class="duration-input-group" style="flex: 0 0 auto;"> <input type="number" id="duration-minutes" min="0" max="59" value="0" placeholder="น." required 
-               style="width: 70px; padding: 6px; text-align: center; font-size: clamp(0.8rem, 2.5vw, 1rem); border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box;">
+               style="width: 70px; padding: 6px; text-align: center; font-size: clamp(0.8rem, 2.5vw, 1rem); border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; background-color: #fff;">
         <span class="duration-label" style="font-size: 0.8rem; margin-top: 4px;">⏰ นาที</span>
       </div>
         
@@ -209,7 +211,7 @@
           </div>
           <div class="time-input-group">
             <div class="date-wrapper">
-              <input type="time" id="end-time" required>
+              <input type="time" id="end-time" required style="background-color: #fff;">
               <label for="end-time" class="time-label-bottom" style="margin-top: 2px;">⏰ เวลาสิ้นสุด</label>
             </div>
           </div>
@@ -221,7 +223,7 @@
         <textarea 
           id="activity-details" 
           placeholder="เช่น การประชุมกับทีม, อ่านหนังสือบทที่ 5"
-          style="width: 100%; max-width: 500px; margin: 0 auto; display: block; padding: 6px;"
+          style="width: 100%; max-width: 500px; margin: 0 auto; display: block; padding: 6px; background-color: #fff;"
         ></textarea>
       </div>
       
@@ -260,11 +262,27 @@
 
       <div style="display: flex; justify-content: center; gap: 8px; margin: 4px 0;">
         <button type="button" onclick="saveToLocal()" 
-                style="width: 160px; border-radius: 30px; background-color: #17a2b8; padding: 8px;">
+                style="
+                  /* ปรับสีปุ่มบันทึกชั่วคราว */
+                  width: 160px; 
+                  border-radius: 30px; 
+                  background-color: #546de5; /* น้ำเงินม่วง */
+                  padding: 8px;
+                "
+                onmouseover="this.style.backgroundColor='#435cb7'"
+                onmouseout="this.style.backgroundColor='#546de5'">
           💾 บันทึกชั่วคราว
         </button>
         <button type="button" onclick="openExportOptionsModal()" 
-                style="width: 160px; border-radius: 30px; background-color: #0d47a1; padding: 8px;">
+                style="
+                  /* ปรับสีปุ่มบันทึกข้อมูล */
+                  width: 160px; 
+                  border-radius: 30px; 
+                  background-color: #1dd1a1; /* เขียวมิ้นต์ */
+                  padding: 8px;
+                "
+                onmouseover="this.style.backgroundColor='#18a381'"
+                onmouseout="this.style.backgroundColor='#1dd1a1'">
           💾 บันทึกข้อมูล
         </button>
       </div>
@@ -276,7 +294,7 @@
             type="password"
             id="backup-password"
             placeholder="ถ้าไม่ต้องการใช้รหัสผ่าน ให้ปล่อยว่างไว้"
-            style="width: 100%; padding-right: 40px; padding: 8px; font-size: clamp(0.5rem, 2.5vw, 1.2rem); border-radius: 8px;"
+            style="width: 100%; padding-right: 40px; padding: 8px; font-size: clamp(0.5rem, 2.5vw, 1.2rem); border-radius: 8px; background-color: #fff;"
           >
           <span id="toggle-password"
                 style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none; font-size: clamp(0.8rem, 2.5vw, 1rem);">
@@ -289,7 +307,7 @@
         <label for="backup-password-confirm">🔐 ยืนยันรหัสผ่าน:</label>
         <div style="position: relative; margin-top: 2px;">
           <input type="password" id="backup-password-confirm" placeholder="กรอกรหัสผ่านอีกครั้ง"
-                 style="width: 100%; padding-right: 40px; padding: 8px; font-size: clamp(0.5rem, 2.5vw, 1.2rem); border-radius: 8px;">
+                 style="width: 100%; padding-right: 40px; padding: 8px; font-size: clamp(0.5rem, 2.5vw, 1.2rem); border-radius: 8px; background-color: #fff;">
           <span id="toggle-password-confirm"
                 style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none;">
             👁️
@@ -299,11 +317,27 @@
 
       <div style="display: flex; justify-content: center; gap: 8px; margin-top: 2px;">
         <button type="button" onclick="saveBackupPassword(event)"
-                style="width: 160px; border-radius: 30px; background-color: #28a745; padding: 8px;">
+                style="
+                  /* ปรับสีปุ่มตั้งรหัสผ่าน */
+                  width: 160px; 
+                  border-radius: 30px; 
+                  background-color: #f39c12; /* ส้มเข้ม */
+                  padding: 8px;
+                "
+                onmouseover="this.style.backgroundColor='#d35400'"
+                onmouseout="this.style.backgroundColor='#f39c12'">
           🔒 ตั้งรหัสผ่าน
         </button>
         <button type="button" onclick="clearBackupPassword()"
-                style="width: 160px; border-radius: 30px; background-color: #dc3545; padding: 8px;">
+                style="
+                  /* ปรับสีปุ่มลบรหัสผ่าน */
+                  width: 160px; 
+                  border-radius: 30px; 
+                  background-color: #ff7f50; /* ส้มคอรัล */
+                  padding: 8px;
+                "
+                onmouseover="this.style.backgroundColor='#ff6347'"
+                onmouseout="this.style.backgroundColor='#ff7f50'">
           ❌ ลบรหัสผ่าน
         </button>
       </div>
@@ -312,7 +346,15 @@
         <div style="display: flex; justify-content: center; margin-bottom: 2px;">
           <button type="button" onclick="cleanAllData()"
                   class="clean-data-btn"
-                  style="background-color: #ff5722; border-radius: 30px; color: white; padding: 8px 18px;">
+                  style="
+                    /* ปรับสีปุ่มทำความสะอาดข้อมูล */
+                    background-color: #dc3545; /* แดง */
+                    border-radius: 30px; 
+                    color: white; 
+                    padding: 8px 18px;
+                  "
+                  onmouseover="this.style.backgroundColor='#c82333'"
+                  onmouseout="this.style.backgroundColor='#dc3545'">
             🧹 ทำความสะอาดข้อมูลทั้งหมด
           </button>
         </div>
@@ -337,7 +379,7 @@
                 <div class="entry-form" style="margin-bottom: 2;">
                   <div class="entry-group">
                     <label for="summary-type-select">📈 ประเภทการสรุป:</label>
-                    <select id="summary-type-select" onchange="loadSummaryData()">
+                    <select id="summary-type-select" onchange="loadSummaryData()" style="background-color: #fff;">
                       <option value="brief-summary">📋 สรุปอย่างย่อ</option>
                       <option value="single-day">📅 ตามวันที่เลือก</option>
                       <option value="date-range">📆 ตามช่วงวันที่</option>
@@ -347,7 +389,6 @@
                 </div>
 
                 <div class="summary-controls">
-                  <!-- แก้ไขส่วนแสดงผลชื่อแบบ auto-selected ที่นี่ -->
                   <div class="auto-selected-person" id="autoSelectedPerson" style="display: none; background-color: #f8f9fa; padding: 8px 12px; border-radius: 15px; border: 1px solid #dee2e6; margin-bottom: 2px; text-align: center;">
                     <label style="font-weight: bold; margin-right: 8px; color: #495057; display: inline-block; width: auto; margin-bottom: 0;">👤 ผู้ทำกิจกรรม:</label>
                     <span id="selectedPersonName" style="color: #28a745; font-size: 1rem; font-weight: bold;"></span>
@@ -355,7 +396,7 @@
 
                   <div class="person-filter-container" id="personFilterContainer">
                     <label for="personFilter">👤 ผู้ทำกิจกรรม:</label>
-                    <select id="personFilter" onchange="loadSummaryData()">
+                    <select id="personFilter" onchange="loadSummaryData()" style="background-color: #fff;">
                       <option value="all">👥 ทุกคน</option>
                     </select>
                   </div>
@@ -365,7 +406,7 @@
                   <label class="summary-subsection-header">📅 เลือกวันที่</label>
                   <div class="summary-date-display">
                     <div class="date-label">📅 เลือกวันที่:</div>
-                    <input type="date" id="summary-date" style="width: 100%; max-width: 200px; padding: 8px; font-size: 14px;">
+                    <input type="date" id="summary-date" style="width: 100%; max-width: 200px; padding: 8px; font-size: 14px; background-color: #fff;">
                   </div>
                 </div>
 
@@ -373,11 +414,11 @@
                   <label class="summary-subsection-header">📆 เลือกช่วงวันที่</label>
                   <div class="summary-date-display">
                     <div class="date-label">📅 จากวันที่:</div>
-                    <input type="date" id="summary-start-date" style="width: 100%; max-width: 200px; padding: 8px; font-size: 14px;">
+                    <input type="date" id="summary-start-date" style="width: 100%; max-width: 200px; padding: 8px; font-size: 14px; background-color: #fff;">
                   </div>
                   <div class="summary-date-display">
                     <div class="date-label">📅 ถึงวันที่:</div>
-                    <input type="date" id="summary-end-date" style="width: 100%; max-width: 200px; padding: 8px; font-size: 14px;">
+                    <input type="date" id="summary-end-date" style="width: 100%; max-width: 200px; padding: 8px; font-size: 14px; background-color: #fff;">
                   </div>
                 </div>
                 
@@ -387,10 +428,11 @@
                       type="button" 
                       onclick="viewSummary()" 
                       style="
+                        /* ปรับสีปุ่มดูสรุป */
                         display: inline-block;
-                        background-color: #FF00FF;
+                        background-color: #7d5fff; /* ม่วงพาสเทล */
                         color: #fff;
-                        border: 2px solid #4527a0;
+                        border: 2px solid #546de5; /* น้ำเงินม่วง */
                         border-radius: 30px;
                         padding: 5px 15px;
                         font-size: 16px;
@@ -401,8 +443,8 @@
                         width: auto;
                         min-width: fit-content;
                       "
-                      onmouseover="this.style.transform='scale(1.05)'"
-                      onmouseout="this.style.transform='scale(1)'"
+                      onmouseover="this.style.transform='scale(1.05)'; this.style.backgroundColor='#5f44d9';"
+                      onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#7d5fff';"
                     >
                       📊 ดูสรุป
                     </button>
@@ -461,7 +503,7 @@
       <div class="popup-content" style="max-width: 600px; background-color: #f0f8ff;">
         <h2 id="personModalTitle" style="color: #0056b3; text-align: center;"></h2>
         <input type="hidden" id="personEditValue">
-        <input type="text" id="modalPersonName" placeholder="👤 ชื่อผู้ทำกิจกรรม">
+        <input type="text" id="modalPersonName" placeholder="👤 ชื่อผู้ทำกิจกรรม" style="background-color: #fff;">
         <div class="modal-button-group">
           <button type="button" id="savePersonBtn" style="background-color: #28a745;">💾 บันทึก</button>
           <button type="button" id="cancelPersonBtn" class="close-popup-btn">❌ ยกเลิก</button>
@@ -473,7 +515,7 @@
       <div class="popup-content" style="max-width: 600px; background-color: #f0f8ff;">
         <h2 id="activityTypeModalTitle" style="color: #0056b3; text-align: center;"></h2>
         <input type="hidden" id="activityTypeEditValue">
-        <input type="text" id="modalActivityTypeName" placeholder="📊 ชื่อประเภทกิจกรรม">
+        <input type="text" id="modalActivityTypeName" placeholder="📊 ชื่อประเภทกิจกรรม" style="background-color: #fff;">
         <div class="modal-button-group">
           <button type="button" id="saveActivityTypeBtn" style="background-color: #28a745;">💾 บันทึก</button>
           <button type="button" id="cancelActivityTypeBtn" class="close-popup-btn">❌ ยกเลิก</button>
@@ -505,11 +547,11 @@
         <div class="entry-form" style="margin-bottom: 2px;">
           <div class="entry-group">
             <label for="exportStartDate">📅 จากวันที่:</label>
-            <input type="date" id="exportStartDate" required>
+            <input type="date" id="exportStartDate" required style="background-color: #fff;">
           </div>
           <div class="entry-group">
             <label for="exportEndDate">📅 ถึงวันที่:</label>
-            <input type="date" id="exportEndDate" required>
+            <input type="date" id="exportEndDate" required style="background-color: #fff;">
           </div>
         </div>
         
