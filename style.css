@@ -364,10 +364,11 @@ button:hover { background-color: #45a049; }
   cursor: pointer;
   display: flex;
   flex-shrink: 0;
-  font-size: 20px;
+  font-size: 22px; /* ปรับให้ใหญ่ขึ้นเล็กน้อย */
   height: 38px;
   justify-content: center;
-  line-height: 42px;
+  align-items: center; /* <<< แก้ไข: เพิ่มเพื่อจัดกึ่งกลางแนวตั้ง */
+  line-height: 1; /* <<< แก้ไข: ปรับลด line-height */
   padding: 0;
   transition: all 0.2s ease;
   width: 44px;
@@ -1001,7 +1002,9 @@ footer div {
 #activity-form .manage-btn-inline {
   height: 32px !important;
   width: 32px !important;
-  font-size: 14px !important;
+  font-size: 18px !important; /* <<< แก้ไข: ปรับขนาดตัวอักษรลง */
+  align-items: center !important; /* <<< แก้ไข: เพิ่มเพื่อจัดกึ่งกลางแนวตั้ง */
+  line-height: 1 !important; /* <<< แก้ไข: ปรับลด line-height */
 }
 #activity-form .date-wrapper {
   margin-bottom: 0px !important;
@@ -1269,6 +1272,7 @@ footer div {
   
   /* Footer */
   footer { border-radius: 25px; font-size: clamp(0.65rem, 2.2vw, 0.8rem); margin: 25px 10px 12px; gap: 6px; line-height: 1.4; max-width: calc(100% - 20px); }
+  footer div { display: block; white-space: normal; }
 }
 
 /* Mobile (Max-width: 480px) */
